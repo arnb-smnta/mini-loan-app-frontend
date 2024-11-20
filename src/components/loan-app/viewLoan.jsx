@@ -1,18 +1,19 @@
-import { handleloanrepayment, viewloan } from "@/api";
-import { requestHandler } from "@/lib/helpers";
+import { adminapprovalforloan, handleloanrepayment, viewloan } from "@/api";
+import { LocalStorage, requestHandler } from "@/lib/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { toast } from "@/hooks/use-toast";
+import { Button } from "../ui/button";
 const ViewLoan = () => {
   const { loanId } = useParams();
-
+  const role = LocalStorage.get("role");
   const [loan, setloandata] = useState("");
   const [loading, setloading] = useState(false);
   const [refresh, setRefresh] = useState(false);
+
   const handleRepayment = (id) => (e) => {
     e.preventDefault();
-    console.log(id);
     requestHandler(
       async () => await handleloanrepayment(id),
       setloading,
@@ -22,7 +23,18 @@ const ViewLoan = () => {
       toast
     );
   };
-
+  const approveLoan = (id) => (e) => {
+    e.preventDefault();
+    console.log("ppp");
+    requestHandler(
+      async () => await adminapprovalforloan(id),
+      setloading,
+      (res) => {
+        setRefresh(!refresh);
+      },
+      toast
+    );
+  };
   useEffect(() => {
     requestHandler(
       async () => await viewloan(loanId),
@@ -32,7 +44,7 @@ const ViewLoan = () => {
       },
       toast
     );
-  }, [refresh]);
+  }, [refresh, loanId]);
 
   if (loading) {
     return <Loader />;
@@ -73,7 +85,7 @@ const ViewLoan = () => {
                       <div className="flex justify-between">
                         <span>{repayment?.status}</span>
                         <button
-                          onClick={() => handleRepayment(5)}
+                          onClick={() => handleRepayment(repayment._id)}
                           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                         >
                           Pay
@@ -91,6 +103,16 @@ const ViewLoan = () => {
           <p>No repayment details available.</p>
         )}
       </div>
+      {role === "ADMIN" && loan.status === "PENDING" && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            className="flex justify-center"
+            onClick={() => approveLoan(loan._id)}
+          >
+            Approve
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

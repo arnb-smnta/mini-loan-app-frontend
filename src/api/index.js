@@ -53,6 +53,18 @@ const viewRepaymentdetails = (repaymentId) => {
   return apiClient.get(`loans/repayment/${repaymentId}`);
 };
 
+const viewallmyLoans = () => {
+  return apiClient.get("/loans/viewLoans");
+};
+
+const viewAllUnapprovedLoans = () => {
+  return apiClient.get("/view/viewUnapprovedLoans");
+};
+
+const viewLoansofaparticularuser = (userId) => {
+  return apiClient.get(`/view/viewloansOfAUser/:userId`);
+};
+
 //loan
 
 export {
@@ -64,4 +76,7 @@ export {
   viewloan,
   handleloanrepayment,
   viewRepaymentdetails,
+  viewallmyLoans,
+  viewAllUnapprovedLoans,
+  viewLoansofaparticularuser,
 };

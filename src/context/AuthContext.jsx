@@ -36,6 +36,7 @@ const AuthProvider = ({ children }) => {
         setToken(data.accessToken);
         LocalStorage.set("user", data.user);
         LocalStorage.set("token", data.accessToken);
+        LocalStorage.set("role", data.user.role);
         navigate("/dashboard/app"); // Redirect to the chat page after successful login
       },
       toast
