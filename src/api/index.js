@@ -41,16 +41,16 @@ const adminapprovalforloan = (loanId) => {
   return apiClient.post(`/loans/approve/${loanId}`);
 };
 
-const viewLoan = (loanId) => {
-  return apiClient.get(`/view/${loanId}`);
+const viewloan = (loanId) => {
+  return apiClient.get(`loans/view/${loanId}`);
 };
 
 const handleloanrepayment = (repaymentId) => {
-  return apiClient.post(`/repayment/${repaymentId}`);
+  return apiClient.post(`loans/repayment/${repaymentId}`);
 };
 
 const viewRepaymentdetails = (repaymentId) => {
-  return apiClient.get(`/repayment/${repaymentId}`);
+  return apiClient.get(`loans/repayment/${repaymentId}`);
 };
 
 //loan
@@ -61,7 +61,7 @@ export {
   logoutUser,
   cretaeLoanRequest,
   adminapprovalforloan,
-  viewLoan,
+  viewloan,
   handleloanrepayment,
   viewRepaymentdetails,
 };

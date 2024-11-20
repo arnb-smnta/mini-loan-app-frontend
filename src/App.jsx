@@ -8,6 +8,8 @@ import Login from "./components/login";
 import Register from "./components/register";
 import PublicRoute from "./components/ui/PublicRoute";
 import NewLoan from "./components/loan-app/NewLoan";
+import ViewLoan from "./components/loan-app/viewLoan";
+import ViewRepayment from "./components/loan-app/ViewRepaymentSchedule";
 function App() {
   const { token, user } = useAuth();
 
@@ -35,6 +37,11 @@ function App() {
         <Route
           path={`/Dashboard/${routes.APPLY_FOR_LOAN}`}
           element={<NewLoan />}
+        />
+        <Route path={`/Dashboard/${routes.VIEW_LOAN}`} element={<ViewLoan />} />
+        <Route
+          path={`/Dashboard/${routes.VIEW_LOAN}`}
+          element={<ViewRepayment />}
         />
       </Route>
       <Route

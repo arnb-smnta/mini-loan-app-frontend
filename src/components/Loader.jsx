@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 
 export default function ButtonLoading() {
   return (
-    <Button disabled>
-      <Loader2 className="animate-spin" />
-      Please wait
-    </Button>
+    <div className="flex justify-center">
+      <Button disabled>
+        <Loader2 className="animate-spin" />
+        Please wait
+      </Button>
+    </div>
   );
 }

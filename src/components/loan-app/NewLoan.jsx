@@ -6,7 +6,8 @@ import { Input } from "../ui/input";
 import { FaMoneyBill1 } from "react-icons/fa6";
 import { requestHandler } from "@/lib/helpers";
 import { useNavigate } from "react-router-dom";
-
+import { routes } from "@/lib/routes.url";
+import Loader from "../Loader";
 const NewLoan = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -14,7 +15,7 @@ const NewLoan = () => {
     amount: "",
     term: "",
   });
-
+  const [loading, setLoading] = useState(false);
   const handleDataChange = (name) => (e) => {
     e.preventDefault();
     setData({ ...data, [name]: e.target.value });
@@ -27,12 +28,11 @@ const NewLoan = () => {
       });
       return;
     }
-    console.log(data);
     requestHandler(
       async () => await cretaeLoanRequest(data),
-      null,
+      setLoading,
       (res) => {
-        navigate("dashboard/");
+        navigate(`/Dashboard/viewloan/${res.data._id}`);
       },
       toast
     );
@@ -43,6 +43,9 @@ const NewLoan = () => {
       handleapplyforloan();
     }
   };
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="">
