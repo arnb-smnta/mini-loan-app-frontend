@@ -58,11 +58,11 @@ const viewallmyLoans = () => {
 };
 
 const viewAllUnapprovedLoans = () => {
-  return apiClient.get("/view/viewUnapprovedLoans");
+  return apiClient.get("loans/viewUnapprovedLoans");
 };
 
 const viewLoansofaparticularuser = (userId) => {
-  return apiClient.get(`/view/viewloansOfAUser/:userId`);
+  return apiClient.get(`loans/viewloansOfAUser/:${userId}`);
 };
 
 //loan

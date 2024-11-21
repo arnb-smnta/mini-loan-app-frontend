@@ -82,13 +82,13 @@ const Index = () => {
       {role === "ADMIN" ? (
         <div className="flex justify-between mt-8 mx-16">
           <div>
-            <Link to="/Dasboard/allunapprovedLoans">
+            <Link to={`/Dashboard${routes.PENDINGLOANS}`}>
               {" "}
               <Button>View all Unapproved Loans</Button>
             </Link>
           </div>
           <div>
-            <Link to={"/Dashboard/viewloanbyuser"}>
+            <Link to={`/Dashboard${routes.VIEWLOANBYUSER}`}>
               <Button>View loan by user</Button>
             </Link>
           </div>

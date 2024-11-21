@@ -1,7 +1,7 @@
 import { adminapprovalforloan, handleloanrepayment, viewloan } from "@/api";
 import { LocalStorage, requestHandler } from "@/lib/helpers";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loader from "../Loader";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "../ui/button";
@@ -12,8 +12,9 @@ const ViewLoan = () => {
   const [loading, setloading] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
-  const handleRepayment = (id) => (e) => {
+  const handleRepayment = async (id, e) => {
     e.preventDefault();
+    console.log(id);
     requestHandler(
       async () => await handleloanrepayment(id),
       setloading,
@@ -23,7 +24,8 @@ const ViewLoan = () => {
       toast
     );
   };
-  const approveLoan = (id) => (e) => {
+
+  const approveLoan = async (id, e) => {
     e.preventDefault();
     console.log("ppp");
     requestHandler(
@@ -41,6 +43,7 @@ const ViewLoan = () => {
       setloading,
       (res) => {
         setloandata(res.data[0]);
+        console.log(res.data);
       },
       toast
     );
@@ -53,9 +56,14 @@ const ViewLoan = () => {
     <div className="container mx-auto p-6">
       <div className="bg-white shadow-md rounded-lg p-6">
         <h1 className="text-2xl font-bold mb-4">Loan Details</h1>
-        <p>
-          <strong>Loan Amount:</strong> {loan?.amount ?? "N/A"}
-        </p>
+        <div>
+          <p>
+            <strong>Loan Amount:</strong> {loan?.amount ?? "N/A"}
+          </p>
+          <p>
+            <strong>Amount due:</strong> {loan?.amountDue ?? "N/A"}
+          </p>
+        </div>
         <p>
           <strong>Status:</strong> {loan?.status ?? "N/A"}
         </p>
@@ -85,14 +93,19 @@ const ViewLoan = () => {
                       <div className="flex justify-between">
                         <span>{repayment?.status}</span>
                         <button
-                          onClick={() => handleRepayment(repayment._id)}
+                          onClick={(e) => handleRepayment(repayment._id, e)}
                           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                         >
                           Pay
                         </button>
                       </div>
                     ) : (
-                      <span>{repayment?.status}</span>
+                      <div className="flex justify-between">
+                        <span>{repayment?.status}</span>
+                        <Link to={`/Dashboard/repayment/${repayment._id}`}>
+                          <Button>View Details</Button>
+                        </Link>
+                      </div>
                     )}
                   </td>
                 </tr>
@@ -107,7 +120,7 @@ const ViewLoan = () => {
         <div className="mt-8 flex justify-center">
           <Button
             className="flex justify-center"
-            onClick={() => approveLoan(loan._id)}
+            onClick={(e) => approveLoan(loan._id, e)}
           >
             Approve
           </Button>

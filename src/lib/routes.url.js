@@ -7,4 +7,6 @@ export const routes = {
   VIEW_LOAN: "/viewloan/:loanId",
   VIEWREPAYMENT: "/repayment/:repaymentId",
   ABOUT_URL: "/about",
+  PENDINGLOANS: "/loans/pendingloans",
+  VIEWLOANBYUSER: "/viewloanbyuser",
 };

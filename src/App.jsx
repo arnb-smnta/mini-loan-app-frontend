@@ -10,7 +10,7 @@ import PublicRoute from "./components/ui/PublicRoute";
 import NewLoan from "./components/loan-app/NewLoan";
 import ViewLoan from "./components/loan-app/viewLoan";
 import ViewRepayment from "./components/loan-app/ViewRepaymentSchedule";
-import AllunapprovedLoans from "./components/loan-app/AllunapprovedLoans";
+import Pendingloans from "./components/loan-app/Pendingloans";
 import LoanByuser from "./components/loan-app/LoanByuser";
 function App() {
   const { token, user } = useAuth();
@@ -42,14 +42,17 @@ function App() {
         />
         <Route path={`/Dashboard/${routes.VIEW_LOAN}`} element={<ViewLoan />} />
         <Route
-          path={`/Dashboard/${routes.VIEW_LOAN}`}
+          path={`/Dashboard/${routes.VIEWREPAYMENT}`}
           element={<ViewRepayment />}
         />
         <Route
-          path={`/Dashboard/allunapprovedLoans`}
-          element={<AllunapprovedLoans />}
+          path={`/Dashboard${routes.PENDINGLOANS}`}
+          element={<Pendingloans />}
         />
-        <Route path={`/Dashboard/viewloanbyuser`} element={<LoanByuser />} />
+        <Route
+          path={`/Dashboard${routes.VIEWLOANBYUSER}`}
+          element={<LoanByuser />}
+        />
       </Route>
       <Route
         path={`${routes.LOGIN_URL}`}
