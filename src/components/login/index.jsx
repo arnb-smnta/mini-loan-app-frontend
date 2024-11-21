@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FaLock } from "react-icons/fa";
 import { useAuth } from "@/context/useAuthHook";
 import { useToast } from "@/hooks/use-toast";
+import CopyTextComponent from "@/CopyTextComponent";
 
 const Login = () => {
   const { toast } = useToast();
@@ -72,13 +73,35 @@ const Login = () => {
           </a>
         </small>
       </div>
-
-      <div className="border border-black p-2 font-extrabold text-center">
-        <h1>Sample Username:shubrakaru</h1>
-        <h1>Sample Password: Arnab@0000</h1>
-        <h2 className="text-red-700">
-          This is sample login credentials you can use to login into my app
-        </h2>
+      <div className="flex justify-between">
+        <div className="border border-black p-2 font-extrabold text-center mr-2">
+          <div className="flex justify-between">
+            <h1>Sample Username:prod-expense-admin</h1>
+            <CopyTextComponent textToCopy={"prod-expense-admin"} />
+          </div>
+          <div className="flex justify-between">
+            <h1>Sample Password: Arnab@1234</h1>
+            <CopyTextComponent textToCopy={"Arnab@1234"} />
+          </div>
+          <h2 className="text-red-700">
+            This is sample login credentials role -admin user you can use to
+            login into my app
+          </h2>
+        </div>
+        <div className="border border-black p-2 font-extrabold text-center">
+          <div className="flex justify-between">
+            <h1>Sample Username:shubrakaru</h1>
+            <CopyTextComponent textToCopy={"shubrakaru"} />
+          </div>
+          <div className="flex justify-between">
+            <h1>Sample Password: Arnab@0000</h1>
+            <CopyTextComponent textToCopy={"Arnab@0000"} />
+          </div>
+          <h2 className="text-red-700">
+            This is sample login credentials role -user you can use to login
+            into my app
+          </h2>
+        </div>
       </div>
     </div>
   );

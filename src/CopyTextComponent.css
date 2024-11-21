@@ -1,0 +1,23 @@
+/* CopyTextComponent.css */
+.text-container {
+  display: flex;
+  align-items: center;
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.copy-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.copy-feedback {
+  margin-left: 10px;
+  color: green;
+  font-size: 14px;
+}
