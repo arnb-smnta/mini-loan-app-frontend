@@ -8,3 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # mini-loan-app-frontend
 # mini-loan-app-frontend
+
+# Video Link: https://drive.google.com/file/d/1KT-uWlWdM5pAFptrj7H_lQP7XYXddtWG/view?usp=drive_link
+
+
