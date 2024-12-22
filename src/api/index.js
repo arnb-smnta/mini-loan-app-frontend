@@ -20,6 +20,9 @@ apiClient.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+const getallUser = () => {
+  return apiClient.get("/users/");
+};
 
 const loginUser = (data) => {
   return apiClient.post("/users/login", data);
@@ -67,6 +70,59 @@ const viewLoansofaparticularuser = (userId) => {
 
 //loan
 
+//assignement-app -21.12.24
+
+//Task
+const createTask = (projectId, data) => {
+  return apiClient.post(`assignment/tasks/${projectId}`, data);
+};
+
+const getTask = (taskId) => {
+  return apiClient.get(`assignment/tasks/t/${taskId}`);
+};
+
+const deleteTask = (taskId) => {
+  return apiClient.delete(`assignment/tasks/t/${taskId}`);
+};
+
+const updateTask = (taskId, data) => {
+  return apiClient.patch(`assignment/tasks/t/${taskId}`, data);
+};
+
+const updateProgressStatus = (taskId, data) => {
+  return apiClient.post(`assignment/tasks/t/${taskId}`, data);
+};
+
+//Project Api
+
+const createProject = (data) => {
+  return apiClient.post(`assignment/project/`, data);
+};
+
+const getproject = (projectId) => {
+  return apiClient.get(`assignment/project/${projectId}`);
+};
+
+const deleteProject = (projectId) => {
+  return apiClient.delete(`assignment/project/${projectId}`);
+};
+
+const updateProject = (projectId, data) => {
+  return apiClient.patch(`assignment/project/${projectId}`, data);
+};
+
+const assignProjectToUser = (projectId, data) => {
+  return apiClient.post(`assignment/project/assign/${projectId}`, data);
+};
+
+const removeUserFromProject = (projectId, data) => {
+  return apiClient.delete(`assignment/project/assign/${projectId}`, data);
+};
+
+const viewAllProjects = () => {
+  return apiClient.get(`assignment/project/`);
+};
+
 export {
   loginUser,
   registerUser,
@@ -79,4 +135,17 @@ export {
   viewallmyLoans,
   viewAllUnapprovedLoans,
   viewLoansofaparticularuser,
+  createTask,
+  getTask,
+  deleteTask,
+  updateTask,
+  updateProgressStatus,
+  createProject,
+  deleteProject,
+  updateProject,
+  assignProjectToUser,
+  removeUserFromProject,
+  getproject,
+  viewAllProjects,
+  getallUser,
 };

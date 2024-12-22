@@ -9,4 +9,11 @@ export const routes = {
   ABOUT_URL: "/about",
   PENDINGLOANS: "/loans/pendingloans",
   VIEWLOANBYUSER: "/viewloanbyuser",
+  CREATEPROJECT: "/createproject",
+  VIEWPROJECT: "/viewproject/:projectId",
+  VIEWTASK: "/viewtask/:taskId",
+  VIEWALLPROJECTS: "/viewallprojects",
+  EDITTASK: "/edittask/:taskId",
+  ADDTASK: "/addtask/:projectId",
+  EDITPROJECT: "/editproject/:projectId",
 };

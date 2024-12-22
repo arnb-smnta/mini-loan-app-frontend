@@ -27,8 +27,8 @@ const Index = () => {
     <div className="shadow-xl bg-white">
       <div className="flex justify-between mx-24 mt-6">
         <div className="flex justify-between">
-          <Link to={`/dashboard${routes.APPLY_FOR_LOAN}`}>
-            <Button>Apply for a new loan</Button>
+          <Link to={`/dashboard${routes.VIEWALLPROJECTS}`}>
+            <Button>View All projects</Button>
           </Link>
         </div>
 

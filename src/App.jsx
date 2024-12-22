@@ -12,6 +12,13 @@ import ViewLoan from "./components/loan-app/viewLoan";
 import ViewRepayment from "./components/loan-app/ViewRepaymentSchedule";
 import Pendingloans from "./components/loan-app/Pendingloans";
 import LoanByuser from "./components/loan-app/LoanByuser";
+import CreateProject from "./components/assignement-app/CreateProject";
+import ViewProject from "./components/assignement-app/ViewProject";
+import ViewTask from "./components/assignement-app/ViewTask";
+import ViewAllProjects from "./components/assignement-app/ViewAllProjects";
+import EditTask from "./components/assignement-app/EditTask";
+import AddTask from "./components/assignement-app/AddTask";
+import EditProject from "./components/assignement-app/EditProject";
 function App() {
   const { token, user } = useAuth();
 
@@ -53,7 +60,27 @@ function App() {
           path={`/Dashboard${routes.VIEWLOANBYUSER}`}
           element={<LoanByuser />}
         />
+        <Route
+          path={`/Dashboard${routes.CREATEPROJECT}`}
+          element={<CreateProject />}
+        />
+        <Route
+          path={`/Dashboard${routes.VIEWPROJECT}`}
+          element={<ViewProject />}
+        />
+        <Route path={`/Dashboard${routes.VIEWTASK}`} element={<ViewTask />} />
+        <Route
+          path={`/Dashboard${routes.VIEWALLPROJECTS}`}
+          element={<ViewAllProjects />}
+        />
+        <Route path={`/Dashboard${routes.EDITTASK}`} element={<EditTask />} />
+        <Route path={`/Dashboard/${routes.ADDTASK}`} element={<AddTask />} />
+        <Route
+          path={`/Dashboard/${routes.EDITPROJECT}`}
+          element={<EditProject />}
+        />
       </Route>
+
       <Route
         path={`${routes.LOGIN_URL}`}
         element={
